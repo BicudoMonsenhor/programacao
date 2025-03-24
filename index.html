@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova de Programação com p5.js</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .question {
+            margin: 20px 0;
+        }
+
+        .question h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .question pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+
+        .question textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 30px;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <h2>Login para Acessar a Prova</h2>
+        <form id="loginForm" onsubmit="return login()">
+            <input type="text" id="username" placeholder="Usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <!-- Prova Page -->
+    <div class="container hidden" id="provaPage">
+        <h2>Prova de Programação com p5.js</h2>
+        <form id="provaForm">
+
+            <!-- Questão 1 -->
+            <div class="question">
+                <h3>1. Encontre os 10 erros no código abaixo. O código está cheio de erros de sintaxe, variáveis incorretas e erros lógicos. Tente identificar todos os problemas!</h3>
+                <pre>
+function setup() {
+    creteCanvas(400, 400);
+    background(255);
+}
+
+function draw() {
+    let x = mouseX;
+    let y = mouseY;
+    ellipse(x, y, 50, 50);
+    if(x > width/2) {
+        fill(255, 0, 0); // Red color
+    else {
+        fill(0, 0, 255); // Blue color
+    }
+    
+    for(i = 0; i < 10; i++) {
+        rect(i*40, 200, 30, 30);
+    }
+}
+
+function mousePressed() {
+    background(0);
+    draw();
+}
+                </pre>
+                <textarea name="q1" placeholder="Escreva a correção do código aqui..."></textarea>
+            </div>
+
+            <!-- Questão 2 -->
+            <div class="question">
+                <h3>2. Olimpíadas de Informática - Programação de Situação Real</h3>
+                <p>Imaginamos que você tem que programar um sistema de monitoramento de temperatura para um prédio inteligente. O sistema recebe 5 entradas de dados:</p>
+                <ul>
+                    <li>Temperatura interna do prédio.</li>
+                    <li>Temperatura externa do prédio.</li>
+                    <li>Umidade do ar.</li>
+                    <li>Horário atual.</li>
+                    <li>Número de pessoas no prédio.</li>
+                </ul>
+                <p>A saída será o ajuste do sistema de ar-condicionado e uma mensagem indicando o estado do prédio, se está confortável ou não.</p>
+                <h3>Construa um código para esse sistema de monitoramento usando o p5.js. Sua programação deve utilizar as 5 entradas de dados e gerar as 2 saídas mencionadas.</h3>
+                <textarea name="q2" placeholder="Escreva sua programação aqui..."></textarea>
+            </div>
+
+            <button type="submit">Enviar Respostas</button>
+        </form>
+    </div>
+
+    <script>
+        // Função para login
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Verificar o login
+            if (username === "aluno" && password === "1234") {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('provaPage').style.display = 'block';
+            } else {
+                alert('Usuário ou senha incorretos!');
+            }
+            return false; // Impede o envio do formulário
+        }
+
+        // Função para enviar as respostas
+        document.getElementById('provaForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Suas respostas foram enviadas com sucesso!');
+        });
+    </script>
+
+</body>
+</html>
