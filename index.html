@@ -151,32 +151,63 @@ function mousePressed() {
                 <textarea name="q2" placeholder="Escreva sua programação aqui..."></textarea>
             </div>
 
+            <div class="question">
+                <h3>3. Missão Espacial: Alerta de Aterrissagem</h3>
+                <p>Você está programando um sistema para uma nave espacial que precisa saber quando iniciar a aterrissagem em Marte. A nave tem um sensor que mede a distância até o solo e uma variável chamada <code>altitude</code>. Quando a altitude for menor que 100, o sistema deve ativar o modo de aterrissagem. Caso contrário, o sistema continua em voo normal.</p>
+                <p>Utilize uma estrutura condicional (<code>if</code>) para resolver essa missão e desenhe na tela a mensagem de acordo com a altitude da nave:</p>
+                <ul>
+                    <li>Se a altitude for menor que 100: mostrar "Iniciando aterrissagem!"</li>
+                    <li>Senão: mostrar "Em voo... Altitude segura."</li>
+                </ul>
+                <p>Crie também um controle com o mouse: ao clicar na tela, a altitude deve diminuir 20 unidades (como se a nave estivesse descendo).</p>
+                <h3>Construa o código p5.js com essas regras.</h3>
+                <textarea name="q3" placeholder="Escreva sua programação aqui..."></textarea>
+            </div>
+
             <button type="submit">Enviar Respostas</button>
         </form>
     </div>
 
     <script>
-        // Função para login
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
 
-            // Verificar o login
-            if (username === "aluno" && password === "1234") {
-                document.getElementById('loginPage').style.display = 'none';
-                document.getElementById('provaPage').style.display = 'block';
-            } else {
-                alert('Usuário ou senha incorretos!');
+            // Função para login
+            function login() {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+        
+                if (username === "aluno" && password === "1234") {
+                    document.getElementById('loginPage').style.display = 'none';
+                    document.getElementById('provaPage').style.display = 'block';
+                } else {
+                    alert('Usuário ou senha incorretos!');
+                }
+                return false; // Impede o envio do formulário
             }
-            return false; // Impede o envio do formulário
-        }
-
-        // Função para enviar as respostas
-        document.getElementById('provaForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Suas respostas foram enviadas com sucesso!');
-        });
+        
+            // Função para enviar as respostas
+            document.getElementById('provaForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                alert('Suas respostas foram enviadas com sucesso!');
+            });
+        
+            // Proteção contra troca de aba ou perda de foco
+            let perdeuFoco = false;
+        
+            window.onblur = () => {
+                perdeuFoco = true;
+            };
+        
+            window.onfocus = () => {
+                if (perdeuFoco) {
+                    alert("Você saiu da aba! A prova será reiniciada por segurança.");
+                    location.reload();
+                }
+            };
+      
+        
     </script>
+      
+
 
 </body>
 </html>
